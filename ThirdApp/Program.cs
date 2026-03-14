@@ -61,6 +61,47 @@ namespace ThirdApp
             //Yes! sealed only prevents inheritance — it does NOT prevent instantiation
             //new SealedClass() is perfectly valid
             #endregion
+
+            #region Part 02 — Practical: Movie Ticket Booking System
+            //a) Create Cinema and open it 
+            Cinema cinema = new Cinema("Grand Cinema");
+            cinema.OpenCinema();
+
+            //b) Create one of each ticket type
+            StandardTicket s = new StandardTicket(
+                movieName: "Avengers",
+                price: 150m,
+                seatNumber: "B5"
+            );
+
+            VipTicket v = new VipTicket(
+                movieName: "Inception",
+                price: 300m,
+                loungeAccess: true
+            );
+
+            IMaxTicket im = new IMaxTicket(
+                movieName: "Dune",
+                price: 200m,
+                is3D: true      // price becomes 200 + 30 = 230
+            );
+
+            //Add all tickets to Cinema
+            cinema.AddTicket(s);
+            cinema.AddTicket(v);
+            cinema.AddTicket(im);
+
+            //c) Print all tickets
+            cinema.PrintAllTickets();
+
+            //Total tickets created
+            Console.WriteLine($"\n Total Tickets Created: {Ticket.GetTotalTickets()}");
+
+            //d) Close Cinema 
+            cinema.CloseCinema();
+
+
+            #endregion
         }
     }
 }
